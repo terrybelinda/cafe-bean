@@ -9,6 +9,8 @@ import axios from "axios";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "react-bootstrap/Image";
+import Card from "react-bootstrap/Card";
+import "./cart.css";
 
 const Cart = ({ getCart, cart: { get_cart } }) => {
   useEffect(() => {
@@ -53,16 +55,35 @@ const Cart = ({ getCart, cart: { get_cart } }) => {
   }
 
   return (
-    <Table responsive>
-      <thead>
-        <tr>
-          <th>Shopping Cart</th>
-          <th></th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>{itemsToRender}</tbody>
-    </Table>
+    <div className="grid-container">
+      <div className="grid-child purple">
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>Shopping Cart</th>
+              <th></th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>{itemsToRender}</tbody>
+        </Table>
+      </div>
+      <div className="grid-child green">
+        <Container className="m-5 d-flex justify-content-center">
+          <Card style={{ width: "18rem" }} bg="light">
+            <Card.Body>
+              <Card.Title>Subtotal</Card.Title>
+
+              <Card.Text>Pick up time: 30 minutes</Card.Text>
+
+              <Button type="submit" className="mb-2" variant="primary">
+                Proceed to Checkout
+              </Button>
+            </Card.Body>
+          </Card>
+        </Container>
+      </div>
+    </div>
   );
 };
 
