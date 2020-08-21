@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import { connect } from "react-redux";
 import { UsaStates as usaStates } from "usa-states";
 import { setAlert } from "../../actions/alerts";
+import { register } from "../../actions/auth";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -41,7 +42,7 @@ const Register = (props) => {
     e.preventDefault();
 
     if (password == password2) {
-      console.log("DONE");
+      props.register(formData);
     } else {
       props.setAlert("Passwords do not match", "danger");
     }
@@ -232,6 +233,7 @@ const Register = (props) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);

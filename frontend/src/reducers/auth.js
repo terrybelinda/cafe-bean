@@ -16,7 +16,7 @@ export default function (state = initalState, action) {
       };
 
     case REGISTER_FAILURE:
-      return { ...state, isAuthenticated: true, loading: false };
+      return { ...state, isAuthenticated: false, loading: false };
 
     default:
       return state;
